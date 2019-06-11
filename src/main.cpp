@@ -1,5 +1,6 @@
-#include <Arduino.h>
+#include "Arduino.h"
 #include "DFRobot_ESP_PH.h"
+#include "EEPROM.h"
 
 DFRobot_ESP_PH ph;
 #define ESPADC 4096.0   //the esp Analog Digital Convertion value
@@ -10,6 +11,7 @@ float voltage, phValue, temperature = 25;
 void setup()
 {
 	Serial.begin(115200);
+	EEPROM.begin(32);//needed to permit storage of calibration value in eeprom
 	ph.begin();
 }
 
